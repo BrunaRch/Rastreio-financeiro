@@ -6,7 +6,7 @@ from entrada_dados import obter_data, obter_quantia, obter_categoria, obter_desc
 
 class CSV:
     ARQUIVO_CSV ="dados_financeiros.csv"
-    COLUNAS = ["data ", "quantia ", "categoria ", "descricao "]
+    COLUNAS = ["data", "quantia", "categoria", "descricao"]
 
     @classmethod
     def initialize_csv(cls):
@@ -35,6 +35,8 @@ def add():
      quantia = obter_quantia()
      categoria = obter_categoria()
      descricao = obter_descricao()
-     CSV.add_entada(data, quantia, categoria, descricao)
+     CSV.add_entrada(data, quantia, categoria, descricao)
 
 CSV.initialize_csv()
+
+add()
