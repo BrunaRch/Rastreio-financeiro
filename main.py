@@ -83,7 +83,15 @@ def plot_transacoes(df):
         .reindex(df.index, fill_value=0)
     )
 
-   
+    plt.figure(figsize=(12, 6))
+    plt.plot(df_entrada.index, df_entrada["quantia"], label="Entrada", color="g")
+    plt.plot(df_despesa.index, df_despesa["quantia"], label="Despesa", color="r")
+    plt.xlabel("Data")
+    plt.ylabel("Quantia")
+    plt.title('Entradas e despesas ao longo do tempo')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
 
 def main():
      while True:
