@@ -1,1 +1,4 @@
-data ,quantia ,categoria ,descricao 
+data,quantia,categoria,descricao
+21-02-2020,200.0,Entrada,bico
+22-02-2020,12000.0,Entrada,salario
+24-02-2020,500.0,Despesas,carro

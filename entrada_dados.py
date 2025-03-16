@@ -1,7 +1,7 @@
 from datetime import datetime
 
 formato_data = "%d-%m-%Y"
-CATEGORIAS = {"E": "Entrada", "S": "Saída"}
+CATEGORIAS = {"E": "Entrada", "D": "Despesas"}
 
 def obter_data(prompt, permitir_padrao = False):
     data_str = input(prompt) 
@@ -27,12 +27,12 @@ def obter_quantia():
         return obter_quantia()
 
 def obter_categoria():
-    categoria = input("Informe a categoria ('E' para Renda/Entrada e 'D' para Despesas/Saídas): ").upper()
+    categoria = input("Informe a categoria ('E' para Entrada e 'D' para Despesas/Saídas): ").upper()
     if categoria in CATEGORIAS:
         return CATEGORIAS[categoria]
     
-    print("Categoria inválida. Por favor 'E' para Renda/Entrada e 'D' para Despesas/Saídas")
-    return obter_categoria
+    print("Categoria inválida. Por favor 'E' para Entrada e 'D' para Despesas/Saídas")
+    return obter_categoria()
 
 def obter_descricao():
     return input("Adicione uma descrição(Opcional): ")
