@@ -3,6 +3,7 @@ import csv
 import os
 from datetime import datetime
 from entrada_dados import obter_data, obter_quantia, obter_categoria, obter_descricao
+import matplotlib.pyplot as plt
 
 class CSV:
     ARQUIVO_CSV ="dados_financeiros.csv"
@@ -64,7 +65,26 @@ def add():
      categoria = obter_categoria()
      descricao = obter_descricao()
      CSV.add_entrada(data, quantia, categoria, descricao)
-    
+
+def plot_transacoes(df):
+    df.set_index('date', inplace=True)
+
+    df_entrada = ( 
+        df[df["categoria"] == "Entrada"]
+        .resample("D")
+        .sum()
+        .reindex(df.index, fill_value=0)
+    )
+
+    df_despesa = (
+        df[df["categoria"] == "Despesa"]
+        .resample("D")
+        .sum()
+        .reindex(df.index, fill_value=0)
+    )
+
+   
+
 def main():
      while True:
           print("\n1. Adicionar nova transação")
@@ -86,7 +106,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-               
-               
-
-# CSV.obter_transacoes("20-02-2020", "26-02-2020")
