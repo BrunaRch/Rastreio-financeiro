@@ -67,7 +67,7 @@ def add():
      CSV.add_entrada(data, quantia, categoria, descricao)
 
 def plot_transacoes(df):
-    df.set_index('date', inplace=True)
+    df.set_index('data', inplace=True)
 
     df_entrada = ( 
         df[df["categoria"] == "Entrada"]
@@ -77,7 +77,7 @@ def plot_transacoes(df):
     )
 
     df_despesa = (
-        df[df["categoria"] == "Despesa"]
+        df[df["categoria"] == "Despesas"]
         .resample("D")
         .sum()
         .reindex(df.index, fill_value=0)
@@ -105,9 +105,12 @@ def main():
           elif escolha == "2":
                inicio_data = obter_data("Informe a data incial (dd-mm-aaaa): ")
                final_data = obter_data("Informe a data final do intervalo (dd-mm-aaaa): ")
-               CSV.obter_transacoes(inicio_data, final_data)
+
+               df = CSV.obter_transacoes(inicio_data, final_data)
+
                if input("Você quer ver a plotação (s/n) ").lower() == "s":
                 plot_transacoes(df)
+                
           elif escolha == "3":
                print("Saindo...")
                break
