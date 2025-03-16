@@ -64,7 +64,29 @@ def add():
      categoria = obter_categoria()
      descricao = obter_descricao()
      CSV.add_entrada(data, quantia, categoria, descricao)
+    
+def main():
+     while True:
+          print("\n1. Adicionar nova transação")
+          print("2. Ver transações e resumo dentro de um intervalo de datas")
+          print("3. Sair")
+          escolha = input("Digite o nº da sua escolha (1-3): ")
 
-# CSV.initialize_csv()
-CSV.obter_transacoes("20-02-2020", "26-02-2020")
-# add()
+          if escolha == "1":
+               add()
+          elif escolha == "2":
+               inicio_data = obter_data("Informe a data incial (dd-mm-aaaa): ")
+               final_data = obter_data("Informe a data final do intervalo (dd-mm-aaaa): ")
+               CSV.obter_transacoes(inicio_data, final_data)
+          elif escolha == "3":
+               print("Saindo...")
+               break
+          else:
+               print("Escolha inválida. Digite 1, 2 ou 3.")
+
+if __name__ == "__main__":
+    main()
+               
+               
+
+# CSV.obter_transacoes("20-02-2020", "26-02-2020")
