@@ -106,6 +106,8 @@ def main():
                inicio_data = obter_data("Informe a data incial (dd-mm-aaaa): ")
                final_data = obter_data("Informe a data final do intervalo (dd-mm-aaaa): ")
                CSV.obter_transacoes(inicio_data, final_data)
+               if input("Você quer ver a plotação (s/n) ").lower() == "s":
+                plot_transacoes(df)
           elif escolha == "3":
                print("Saindo...")
                break
